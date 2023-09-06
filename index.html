@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Task Manager SPA</title>
+</head>
+<body>
+    <div id="app">
+        <section class="presentation">
+            <h1>Task Manager</h1>
+            <p>Hi. This is a simple to-do list. You can add a task, the start date and the description. Once added, task can be validated by the end date.</p>
+        </section>
+
+        <section class="search">
+            <div class="search__container">
+                <input type="text" id="searchInput" placeholder="Search tasks...">
+                <input type="datetime-local" id="dateSearchInput" placeholder="Search tasks...">
+                <button id="searchButton">Search</button>
+                <button id="clearSearch">Clear</button>
+            </div>
+        </section>
+
+<section class="add-the-task">
+    <input id="taskInput" type="text" placeholder="Enter task...">
+    <input id="taskDescription" type="text" placeholder="Enter task description...">
+    <input id="taskStart" type="datetime-local" >
+    <button id="addTaskBtn">Add Task</button>
+
+</section>
+        <div>
+
+        <ul id="taskList">
+            <!-- Here all the tasks are posted -->
+
+        </ul>
+    </div>
+    <!-- <script  src="complementary.js"></script> -->
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
