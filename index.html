@@ -15,27 +15,29 @@
 
         <section class="search">
             <div class="search__container">
-                <input type="text" id="searchInput" placeholder="Search tasks...">
-                <input type="datetime-local" id="dateSearchInput" placeholder="Search tasks...">
+                <input type="text" class="search-by-text" id="searchInput" placeholder="Search tasks...">
+                <input type="date" class="search-by-date" id="dateSearchInput" placeholder="Search tasks...">
                 <button id="searchButton">Search</button>
                 <button id="clearSearch">Clear</button>
             </div>
         </section>
 
 <section class="add-the-task">
-    <input id="taskInput" type="text" placeholder="Enter task...">
+    <input id="taskInput"  type="text" placeholder="Enter task...">
     <input id="taskDescription" type="text" placeholder="Enter task description...">
-    <input id="taskStart" type="datetime-local" >
+    <input id="taskStart" type="date" >
     <button id="addTaskBtn">Add Task</button>
 
 </section>
-        <div>
+
+<section class="taskList">
+
 
         <ul id="taskList">
             <!-- Here all the tasks are posted -->
 
         </ul>
-    </div>
+    </section>
     <!-- <script  src="complementary.js"></script> -->
     <script type="module" src="js/script.js"></script>
 </body>

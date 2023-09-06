@@ -28,9 +28,11 @@ function displayTasks(tasks) {
         taskPresentation.classList.add('taskPresentation');
         
         const taskHeader = document.createElement('h3');
+        taskHeader.classList.add("taskName");
         taskHeader.textContent = taskItem.label;
         
         const taskDescription = document.createElement('p');
+        taskDescription.classList.add("taskDescription");
         taskDescription.textContent = taskItem.description;
         
         const taskStartDate = document.createElement('p');
@@ -41,7 +43,7 @@ function displayTasks(tasks) {
         const taskDelete = document.createElement('div');
         taskDelete.classList.add("button");
         taskDelete.classList.add("deleteTaskBtn");
-        taskDelete.textContent = "X";
+        taskDelete.textContent = "Delete X";
         
         const taskEndDateElement = document.createElement('div');
         taskEndDateElement.classList.add("taskEndDate");
@@ -77,15 +79,6 @@ function displayTasks(tasks) {
         li.appendChild(taskEndDateElement);
         li.appendChild(taskEndDatePreventor);
         
-        // Add event listeners for delete and update
-        // taskDelete.addEventListener("click", () => {
-
-        // });
-        
-        // taskEndDateUpdateButton.addEventListener('click', () => {
-        //     addEndInput(taskItem.label);
-
-        // });
 
         li.addEventListener("click", (event) => {
             const targetClassList = event.target.classList;
@@ -123,7 +116,7 @@ function addEndInput(label) {
     const taskEndDateSubmitter = document.createElement('div');
     taskEndDateSubmitter.classList.add("deadline_add");
     const updateInput = document.createElement('input');
-    updateInput.type = "datetime-local";
+    updateInput.type = "date";
 
     const taskEndDateSubmitButton = document.createElement('div');
     taskEndDateSubmitButton.classList.add('taskEndDateSubmitButton');
@@ -166,7 +159,7 @@ function submitEndDate(item, endDate){
 
     
             const updatedTask = {
-                end_date: `${endDate}:05Z`, // Include the end_date property only
+                end_date: `${endDate}T12:00:00Z`, // Include the end_date property only
             };
 
 

@@ -109,11 +109,7 @@ searchButton.addEventListener('click', async () => {
                 });
             }
             taskList.innerHTML = '';
-            // Update the UI with the filtered tasks
-            // filteredTasks.forEach(task => {
-            //     const filteredLi = createTaskListItem(task);
-            //     taskList.appendChild(filteredLi);
-            // });
+
         }
 
         displayTasks(filteredTasks);
@@ -133,13 +129,13 @@ clearSearch.addEventListener('click', async () => {
 addTaskBtn.addEventListener('click', async () => {
     const label = document.getElementById('taskInput').value;
     const description = document.getElementById('taskDescription').value;
-    const start_date = `${document.getElementById('taskStart').value}:05Z`;
+    const start_date = `${document.getElementById('taskStart').value}T12:00:00Z`;
     console.log(label);
     try {
         const newTask = await addTask({ label, description, start_date, });
-     
+     if(newTask){
         loadTasks(); // Reload all tasks
-        clearUI();
+        clearUI();}
     } catch (error) {
         console.error('Error adding task:', error);
     }
