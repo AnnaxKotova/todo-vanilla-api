@@ -2,7 +2,6 @@
 const API_URL = 'http://localhost:9000/v1/tasks';
 
 
-
 async function fetchTasks() {
     try {
         const response = await fetch(API_URL);
@@ -38,18 +37,8 @@ async function fetchTasks() {
 }
 
 
-
-
 async function addTask(newTask) {
-
     console.log("submitted");
-
-    // const newTask = {
-    //     label: taskInput.value,
-    //     description: taskDescription.value,
-    //     start_date: `${taskStart.value}:05Z`,
-    //     // end_date doesnt exist
-    // };
 
     try {
         const response = await fetch(API_URL, {
@@ -59,16 +48,15 @@ async function addTask(newTask) {
             },
             body: JSON.stringify(newTask),
         });
-
         if (response.ok) {
             const contentType = response.headers.get('content-type');
             if (contentType && contentType.includes('application/json')) {
                 const addedTask = await response.json();
                 console.log('New task:', addedTask);
-                return true; // Task added successfully
+                return true;
             } else if (response.status === 201) {
                 console.log('New task:', newTask);
-                return true; // Task added successfully (non-JSON response)
+                return true;
             } else {
                 console.error('Received non-JSON response:', contentType, 'Response code:', response.status);
             }
@@ -77,14 +65,13 @@ async function addTask(newTask) {
         }
     } catch (error) {
         console.error('Error:', error);
-        return false; // Task addition failed
+        return false;
     }
-
-
 }
 
+
+// Update an existing task in the API
 async function updateTask(taskLabel, end_date) {
-    // Update an existing task in the API
     try {
         const taskLabelEncoded = encodeURIComponent(taskLabel);
         const response = await fetch(`${API_URL}/${taskLabelEncoded}`, {
@@ -101,20 +88,18 @@ async function updateTask(taskLabel, end_date) {
                 const updatedTaskResponse = await response.json();
                 console.log('Updated task:', updatedTaskResponse);
             }
-            return true; // Task was updated successfully
+            return true;
         } else {
-            // Handle error
             console.error('Failed to update task:', response.status);
-            return false; // Task update failed
+            return false;
         }
     } catch (error) {
         console.error('Error:', error);
-        return false; // Task update failed due to an error
+        return false;
     }
 }
 
 async function deleteTask(taskLabel) {
-    // Delete a task from the API
     try {
         const taskLabelEncoded = encodeURIComponent(taskLabel);
         const response = await fetch(`${API_URL}/${taskLabelEncoded}`, {
@@ -123,21 +108,14 @@ async function deleteTask(taskLabel) {
 
         if (response.ok) {
             console.log('success');
-            return true; // Task was deleted successfully
-        } 
-        // else if 
-        //   (response.status === 201) {
-        //     console.error('Non JSON');
-        //     return true;
-        // }
-        else {
-            // Handle error
+            return true;
+        } else {
             console.error('Failed to delete task:', response.status);
-            return false; // Task deletion failed
+            return false;
         }
     } catch (error) {
         console.error('Error:', error);
-        return false; // Task deletion failed due to an error
+        return false;
     }
 }
 
